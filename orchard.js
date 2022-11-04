@@ -27,15 +27,13 @@
     in cents. 
 */
 
-const fujiAcres = [2, 3, 3, 2, 2, 2, 1]
-const galaAcres = [5, 2, 4, 3, 6, 2, 4]
-const pinkAcres = [1, 5, 4, 2, 1, 5, 4]
+const fujiAcres = [2, 3, 3, 2, 2, 2, 1];
+const galaAcres = [5, 2, 4, 3, 6, 2, 4];
+const pinkAcres = [1, 5, 4, 2, 1, 5, 4];
 
-const fujiPrice = .89 
-const galaPrice = .64
-const pinkPrice = .55
-
-
+const fujiPrice = 0.89;
+const galaPrice = 0.64;
+const pinkPrice = 0.55;
 
 // PROBLEM 1
 
@@ -51,9 +49,35 @@ const pinkPrice = .55
 
 // CODE HERE
 
+// get sum of total acres for each array
+// declare a variable to store the total sum for individual array
+let sum1 = 0;
+let sum2 = 0;
+let sum3 = 0;
 
+//for loop to get sum of first array
+for (let i = 0; i < fujiAcres.length; i++) {
+  // add each element of array to sum to get total
+  sum1 += fujiAcres[i];
+}
+console.log(sum1);
 
+//for loop to get sum of second array
+for (let i = 0; i < galaAcres.length; i++) {
+  sum2 += galaAcres[i];
+}
+console.log(sum2);
 
+//for loop to get sum of first array
+for (let i = 0; i < pinkAcres.length; i++) {
+  sum3 += pinkAcres[i];
+}
+console.log(sum3);
+
+// add total from 3 arrays to get grand total
+let totalAcres = sum1 + sum2 + sum3;
+
+console.log(totalAcres);
 
 // PROBLEM 2
 
@@ -69,9 +93,13 @@ const pinkPrice = .55
 
 // CODE HERE
 
+// get number of days in the week
+let daysOfWeek = fujiAcres.length;
 
+// divide total acres picked by number of days to get average
+let averageDailyAcres = totalAcres / daysOfWeek;
 
-
+console.log(averageDailyAcres);
 
 // PROBLEM 3
 
@@ -102,12 +130,15 @@ const pinkPrice = .55
 
 */
 
-let acresLeft = 174 
-let days = 0
+let acresLeft = 174;
+let days = 0;
 
 // CODE HERE
-
-
+// while (acresLeft > 0) {
+//   acresLeft - averageDailyAcres;
+//   days++;
+// }
+//console.log(days);
 
 // PROBLEM 4
 
@@ -134,15 +165,31 @@ let days = 0
 */
 
 // CODE HERE
+// make copies of arrays using slice method
+let fujiCopy = fujiAcres.slice();
+let galaCopy = galaAcres.slice();
+let pinkCopy = pinkAcres.slice();
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+// make empty arrays for
+let fujiTons = [];
+let galaTons = [];
+let pinkTons = [];
 
+//multiply each element by 6.5 tons to get total yield of apples per acre
+for (let i = 0; i < fujiCopy.length; i++) {
+  fujiTons.push(fujiCopy[i] * 6.5);
+}
+console.log(fujiTons);
 
+for (let i = 0; i < galaCopy.length; i++) {
+  galaTons.push(galaCopy[i] * 6.5);
+}
+console.log(galaTons);
 
-
-
+for (let i = 0; i < pinkCopy.length; i++) {
+  pinkTons.push(pinkCopy[i] * 6.5);
+}
+console.log(pinkTons);
 
 // PROBLEM 5
 
@@ -160,16 +207,15 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+// CODE HERE
+// get total tons using array.reduce method and multiply by 2000 to get total pounds
+let fujiPounds = fujiTons.reduce((a, b) => a + b, 0) * 2000;
+let galaPounds = galaTons.reduce((a, b) => a + b, 0) * 2000;
+let pinkPounds = pinkTons.reduce((a, b) => a + b, 0) * 2000;
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
-
-
-
-
-
+console.log(fujiPounds);
+console.log(galaPounds);
+console.log(pinkPounds);
 
 // PROBLEM 6
 
@@ -188,15 +234,14 @@ let days = 0
 */
 
 // CODE HERE
+// multiply profit by price by to get total profit;
+let fujiProfit = fujiPounds * fujiPrice;
+let galaProfit = galaPounds * galaPrice;
+let pinkProfit = pinkPounds * pinkPrice;
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
-
-
-
-
-
+console.log("fuji profit is", fujiProfit);
+console.log(galaProfit);
+console.log(pinkProfit);
 
 // PROBLEM 7
 
@@ -206,6 +251,11 @@ let days = 0
     `totalProfit`.
 
     Log `totalProfit` to the console.
+
 */
 
 // CODE HERE
+// add profit from each kind of apple to get total profit
+let totalProfit = fujiProfit + galaProfit + pinkProfit;
+
+console.log(totalProfit);
